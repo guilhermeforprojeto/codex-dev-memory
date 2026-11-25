@@ -1,12 +1,15 @@
 # Estado do projeto
 
 ## Etapa atual
-v1.1.0 instalada nesta máquina: comando global codex-memory, preparação automática por projeto e início direto em português. Testes locais aprovados; publicação da atualização em andamento (2026-11-25).
+v1.1.1 instalada e publicada: comando global codex-memory, preparação automática por projeto e início direto em português. Bootstrap público e atualização pelo comando curto aprovados (2026-11-25).
 
 ## Concluído
 - Comando global codex-memory instalado; projeto novo, repetição, subpasta, atualização de 1.0.2 e texto acentuado verificados.
 - README principal com o comando de início em destaque; instruções e novos checkpoints em português.
 - 26 testes automatizados aprovados; 12 verificações de instalação repetidas com sucesso para 1.1.0.
+- 28 testes automatizados aprovados na 1.1.1, incluindo regressão da herança de módulos entre PowerShell 7 e 5.1.
+- Release pública 1.1.1 verificada pelo bootstrap do README e pelo comando codex-memory update; registros anteriores preservados.
+- CI da tag v1.1.1 aprovado: https://github.com/guilhermeforprojeto/codex-dev-memory/actions/runs/45612654632.
 - Pesquisa de Codex CLI, MCP, hooks, Headroom, Basic Memory e Serena.
 - Codex existente detectado, autenticado com ChatGPT.
 - Autenticação GitHub existente validada; conteúdo e histórico encontrados no destino preservados.
@@ -35,7 +38,7 @@ v1.1.0 instalada nesta máquina: comando global codex-memory, preparação autom
 - Adaptador complementar para validação de segredos, checkpoint, exportação e deduplicação por chave.
 
 ## Pendências
-Publicar v1.1.0 e verificar o CI. Limitações documentadas: confiança dos hooks depende de revisão no Codex; reinício físico, API paga, proxy legado e avaliação semântica em larga escala não foram testados.
+Nenhuma pendência de implementação, configuração local ou publicação. Limitações documentadas: confiança dos hooks depende de revisão no Codex; reinício físico, API paga, proxy legado e avaliação semântica em larga escala não foram testados.
 
 ## Problemas
 - Ambiente sandbox bloqueia rede; downloads autorizados exigem execução fora do sandbox.

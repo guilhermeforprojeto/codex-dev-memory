@@ -2,6 +2,13 @@
 
 ## Comando simples — v1.1.0
 
+**Entrega 1.1.1: 28 testes automatizados aprovados.** Instalação pelo comando público do README
+com ambos os hashes verificados: `README_111_PUBLIC_BOOTSTRAP_PASS`. Atualização pelo comando
+global, consulta de memória anterior e novo início: `PUBLIC_111_SHORT_COMMAND_PASS`.
+O comando global e a instalação principal desta máquina estão na versão 1.1.1.
+O [CI da tag v1.1.1](https://github.com/guilhermeforprojeto/codex-dev-memory/actions/runs/45612654632)
+também foi aprovado, com 28 testes, análise dos scripts PowerShell e regressão do despacho de atualização.
+
 Correção 1.1.1: o teste público de atualização expôs a herança de `PSModulePath` do PowerShell 7
 através do atalho `.cmd`, carregando o módulo Utility 7 no PowerShell 5.1 e deixando `Get-FileHash`
 indisponível. O comando agora prioriza os módulos nativos do próprio host e importa Utility
