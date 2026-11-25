@@ -1,0 +1,2 @@
+# The published bootstrap hash must be stable across Windows checkouts.
+bootstrap.ps1 text eol=lf

@@ -1,0 +1,16 @@
+[project]
+name = "codex-dev-memory"
+version = "1.0.0"
+description = "Project-local Headroom memory and explicit context compression for Codex CLI"
+requires-python = ">=3.12,<3.14"
+license = "MIT"
+dependencies = [
+  "headroom-ai==0.45.0",
+  "mcp==2.3.0",
+  "onnxruntime==1.32.0",
+  "sqlite-vec==0.1.9",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

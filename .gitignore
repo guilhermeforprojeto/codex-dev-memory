@@ -1,0 +1,25 @@
+.codex-dev-memory/
+.headroom/
+.venv/
+.pytest_cache/
+__pycache__/
+*.pyc
+*.db
+*.db-*
+*.sqlite*
+*.log
+.env
+.env.*
+auth.json
+exports/
+dist/
+work/
+.codex/hooks.json
+/.vscode/
+
+
+# codex-dev-memory:begin
+/.codex-dev-memory/
+/.headroom/
+/.codex/hooks.json
+# codex-dev-memory:end
