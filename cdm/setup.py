@@ -98,7 +98,8 @@ def install(root, source, python, codex):
     checkpoint = p.data/'checkpoint.md'
     if not checkpoint.exists():
         shutil.copy2(source/'templates/ESTADO_PROJETO.md', checkpoint)
-    atomic_json(p.data/'installation.json', {'version': '1.0.0', 'python': str(python),
+    from . import __version__
+    atomic_json(p.data/'installation.json', {'version': __version__, 'python': str(python),
                 'codex': str(codex), 'source': str(source), 'project': str(p.root)})
     # Launcher remains stable across releases. Runtime source stays ignored.
     launcher = "param([string]$Action='start', [Parameter(ValueFromRemainingArguments=$true)][string[]]$Arguments)\n"

@@ -5,6 +5,7 @@ param(
     [Parameter(ValueFromRemainingArguments=$true)][string[]]$Arguments
 )
 . (Join-Path $PSScriptRoot 'scripts/common.ps1')
+$Arguments = @($Arguments | Where-Object { $null -ne $_ })
 $install = Get-Installation $ProjectPath
 $oldPath = $env:PATH
 $portableNode = Join-Path $install.project '.codex-dev-memory/tools/node-v24.15.0-win-x64'

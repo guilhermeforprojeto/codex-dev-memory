@@ -22,12 +22,17 @@ authenticated with ChatGPT. The user's production credentials were never exporte
 | VS Code integrated PowerShell terminal | PASS in an isolated Extension Host empty window with explicit project cwd; actual doctor command returned VSCODE_TERMINAL_PASS; workspace trust was not disabled |
 | Missing UV/Node/Codex provisioning | PASS with isolated PATH and portable installs; existing global tools were left intact; provisioned Codex 0.172.0 reused ChatGPT authentication |
 | Offline payload benchmark | PASS; full original recovery and FATAL preservation |
+| Update launcher regression | PASS on PowerShell 5.1 and 7 in 1.0.1; null arguments no longer override the default version |
 | Physical reboot / GUI close-reopen | NOT RUN; durable files and cross-process persistence tested instead |
 | Paid API authentication / Headroom model proxy | NOT RUN; neither is required for the chosen architecture |
 | Windows ARM64 / Linux / macOS installer | NOT SUPPORTED by this release's Windows x64 installer |
 | Model semantic quality in Portuguese / large-scale workloads | NOT benchmarked systematically |
 
-Final public-release/bootstrap/CI checks are recorded below after publication.
+Public bootstrap 1.0.0 installation passed with both SHA-256 checks. Its final remote-update test
+found an empty positional argument overriding the release version; memory remained intact.
+Version 1.0.1 corrects this and preserves the original assets. Release-commit CI for 1.0.0 passed:
+[Windows run](https://github.com/guilhermeforprojeto/codex-dev-memory/actions/runs/45552214380).
+The 1.0.1 public-install/update result is recorded after the corrected release is verified.
 
 ## Reproducible payload benchmark
 

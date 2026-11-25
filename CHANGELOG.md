@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.1 — 2026-11-25
+
+- Fix the PowerShell launcher passing a null positional argument to update, which replaced the default release version with an empty string.
+- Add a regression test for the installed wrapper and preserve the published 1.0.0 archive; use 1.0.1 for new installations.
+
 ## 1.0.0 — 2026-11-25
 
 - Project-local Headroom 0.45.0 memory with SQLite, ONNX semantic search and FTS5.

@@ -1,4 +1,4 @@
-param([string]$ProjectPath=(Get-Location).Path, [string]$Version='v1.0.0', [string]$SourcePath)
+param([string]$ProjectPath=(Get-Location).Path, [string]$Version='v1.0.1', [string]$SourcePath)
 $ErrorActionPreference='Stop'
 if ($SourcePath) {
     # Explicit local source for developers; never auto-pull an unpinned branch.

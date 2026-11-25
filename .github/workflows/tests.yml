@@ -35,3 +35,6 @@ jobs:
             $failures += $errors
           }
           if ($failures.Count) { $failures | Format-List; exit 1 }
+      - name: PowerShell update dispatch regression
+        shell: pwsh
+        run: ./tests/dispatch.ps1
