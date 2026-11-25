@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.1 — 2026-11-25
+
+- Corrige a disponibilidade de Get-FileHash no atualizador chamado pelo comando global no PowerShell 5.1.
+- Adiciona dois testes do caminho completo de despacho da atualização; 28 testes automatizados.
+
 ## 1.1.0 — 2026-11-25
 
 - Comando global `codex-memory`: prepara projetos novos automaticamente e abre o Codex com memória e Headroom.

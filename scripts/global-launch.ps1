@@ -1,5 +1,12 @@
 # The shim forwards all arguments without PowerShell parameter binding.
 $ErrorActionPreference = 'Stop'
+# A .cmd launched by PS 7 can pass its module paths through to PS 5.1. Prefer
+# this host's built-in modules, without changing the user's persisted environment.
+if ($PSVersionTable.PSEdition -eq 'Desktop') {
+    $env:PSModulePath = [IO.Path]::Combine($PSHOME,'Modules') + ';' + $env:PSModulePath
+}
+Import-Module Microsoft.PowerShell.Utility -Global -ErrorAction Stop
+Get-Command Get-FileHash,Expand-Archive -ErrorAction Stop | Out-Null
 $source = Split-Path $PSScriptRoot -Parent
 [string[]]$forward = @($args)
 if ($forward.Count -gt 0 -and $forward[0] -in @('--help','help')) {

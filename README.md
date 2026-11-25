@@ -57,7 +57,7 @@ verifica o SHA-256 do bootstrap, executa o arquivo local e verifica o ZIP da rel
 Não usa `Invoke-Expression` nem muda a política de execução.
 
 ```powershell
-$p=Join-Path $env:TEMP 'cdm-bootstrap-v1.1.0.ps1'; Invoke-WebRequest -UseBasicParsing 'https://github.com/guilhermeforprojeto/codex-dev-memory/releases/download/v1.1.0/bootstrap.ps1' -OutFile $p; if((Get-FileHash -LiteralPath $p -Algorithm SHA256).Hash -ne 'f88c60d82d13780610c344dfddff68963bf730dc901d5124d3253f00d4709ba2'){throw 'SHA-256 invalido'}; & $p
+$p=Join-Path $env:TEMP 'cdm-bootstrap-v1.1.1.ps1'; Invoke-WebRequest -UseBasicParsing 'https://github.com/guilhermeforprojeto/codex-dev-memory/releases/download/v1.1.1/bootstrap.ps1' -OutFile $p; if((Get-FileHash -LiteralPath $p -Algorithm SHA256).Hash -ne '4bf72d456ce58aca53003997eb2a8ec47825362d10556978cae8eaa592614f13'){throw 'SHA-256 invalido'}; & $p
 ```
 
 Requisitos: Windows 11 x64, PowerShell 5.1 ou 7 e acesso à internet na primeira instalação.

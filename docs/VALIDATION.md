@@ -2,6 +2,14 @@
 
 ## Comando simples — v1.1.0
 
+Correção 1.1.1: o teste público de atualização expôs a herança de `PSModulePath` do PowerShell 7
+através do atalho `.cmd`, carregando o módulo Utility 7 no PowerShell 5.1 e deixando `Get-FileHash`
+indisponível. O comando agora prioriza os módulos nativos do próprio host e importa Utility
+explicitamente, apenas no seu processo. Dois testes adicionais exercitam esse caminho em PowerShell 5.1/7.
+O CI da 1.1.0 passou em [45611386542](https://github.com/guilhermeforprojeto/codex-dev-memory/actions/runs/45611386542);
+o teste público posterior motivou esta correção. A instalação pública 1.1.0 passou quando o
+módulo foi importado explicitamente; a versão corrigida faz isso automaticamente.
+
 Validado em 2026-11-25: `codex-memory` instalado no PATH já existente desta máquina;
 nenhum perfil PowerShell ou configuração global do Codex foi alterado. O comando preparou
 um projeto Git novo a partir de uma subpasta, iniciou o executável real do Codex com `start --version`,

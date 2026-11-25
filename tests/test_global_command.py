@@ -27,7 +27,7 @@ def test_global_routing_installs_once_and_preserves_arguments(tmp_path, shell):
 $data = Join-Path $ProjectPath '.codex-dev-memory'
 New-Item -ItemType Directory -Force -Path $data | Out-Null
 Add-Content (Join-Path $ProjectPath 'installs.txt') 'installed'
-@{project=$ProjectPath;source=$PSScriptRoot;version='1.1.0'} | ConvertTo-Json | Set-Content (Join-Path $data 'installation.json')
+@{project=$ProjectPath;source=$PSScriptRoot;version='1.1.1'} | ConvertTo-Json | Set-Content (Join-Path $data 'installation.json')
 ''', encoding='utf-8')
     (app/'cdm.ps1').write_text('''param([string]$Action,[string]$ProjectPath,[string[]]$Arguments)
 @{action=$Action;project=$ProjectPath;arguments=@($Arguments)} | ConvertTo-Json -Compress | Set-Content (Join-Path $ProjectPath 'capture.json')
@@ -67,7 +67,7 @@ def test_command_install_preserves_foreign_files_and_reinstalls(tmp_path, shell)
         assert result.returncode == 0, result.stderr
     assert (bin_dir/'codex-memory.cmd').exists()
     result = run(shell, dest/'app/scripts/global-launch.ps1', '--version')
-    assert result.returncode == 0 and 'codex-memory 1.1.0' in result.stdout
+    assert result.returncode == 0 and 'codex-memory 1.1.1' in result.stdout
     shim = bin_dir/'codex-memory.cmd'
     shim.write_text('foreign command', encoding='ascii')
     result = run(shell, installer, *arguments)
