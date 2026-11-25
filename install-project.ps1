@@ -53,7 +53,7 @@ try {
         }
         $npm = Get-Command npm.cmd -ErrorAction Stop
         $codexDir = Join-Path $toolsDir 'codex'
-        & $npm.Source install --prefix $codexDir --no-audit --no-fund '@openai/codex'
+        & $npm.Source install --prefix $codexDir --no-audit --no-fund '@openai/codex@0.172.0'
         Assert-Exit 'Codex installation'
         $codexExe = Join-Path $codexDir 'node_modules/.bin/codex.cmd'
     }
