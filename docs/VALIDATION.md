@@ -10,7 +10,7 @@ authenticated with ChatGPT. The user's production credentials were never exporte
 | Isolation and process persistence | PASS; two project directories, fresh Python processes |
 | Secret patterns, invalid categories, traversal, original integrity | PASS; synthetic negative inputs |
 | AGENTS preservation, existing hooks, idempotent merge | PASS; BOM/CRLF prefix and unrelated JSON fields retained |
-| Automated Python suite | PASS: 16 tests; upstream datetime deprecation warnings only |
+| Automated Python suite | PASS: 22 tests in 1.0.2, including actual installed launcher subprocesses on PS 5.1/7; upstream datetime deprecation warnings only |
 | Empty/existing/repeated install | PASS; real isolated runtimes with space-containing paths |
 | Local update, uninstall retention, reinstall, export, confirmed clear | PASS; twelve lifecycle checks in integration.ps1 |
 | Codex diagnostic/auth/MCP configuration | PASS with existing ChatGPT sign-in |
@@ -23,6 +23,7 @@ authenticated with ChatGPT. The user's production credentials were never exporte
 | Missing UV/Node/Codex provisioning | PASS with isolated PATH and portable installs; existing global tools were left intact; provisioned Codex 0.172.0 reused ChatGPT authentication |
 | Offline payload benchmark | PASS; full original recovery and FATAL preservation |
 | Update launcher regression | PASS on PowerShell 5.1 and 7 in 1.0.1; null arguments no longer override the default version |
+| Single-subcommand launcher regression | PASS in 1.0.2: actual checkpoint, metrics and memory status commands return valid JSON through the outer launcher on PS 5.1/7 |
 | Physical reboot / GUI close-reopen | NOT RUN; durable files and cross-process persistence tested instead |
 | Paid API authentication / Headroom model proxy | NOT RUN; neither is required for the chosen architecture |
 | Windows ARM64 / Linux / macOS installer | NOT SUPPORTED by this release's Windows x64 installer |
@@ -32,7 +33,21 @@ Public bootstrap 1.0.0 installation passed with both SHA-256 checks. Its final r
 found an empty positional argument overriding the release version; memory remained intact.
 Version 1.0.1 corrects this and preserves the original assets. Release-commit CI for 1.0.0 passed:
 [Windows run](https://github.com/guilhermeforprojeto/codex-dev-memory/actions/runs/45552214380).
-The 1.0.1 public-install/update result is recorded after the corrected release is verified.
+**1.0.1 public installation and update: PASS.** The README command downloaded the published
+bootstrap, verified its pinned hash, verified the release ZIP, installed into a path with spaces,
+and passed doctor. The `cdm.ps1 update` shortcut then downloaded/reinstalled the same public
+release successfully; a synthetic memory saved under 1.0.0 was still retrievable afterward
+(`PUBLIC_RELEASE_101_INSTALL_UPDATE_PASS`). Main local installation was upgraded to 1.0.1 too.
+
+**1.0.1 remote CI: PASS.** Both the
+[release commit workflow](https://github.com/guilhermeforprojeto/codex-dev-memory/actions/runs/45552711377)
+and [tag workflow](https://github.com/guilhermeforprojeto/codex-dev-memory/actions/runs/45552771967)
+completed successfully, including native Python tests, PowerShell parsing and the update-dispatch regression.
+
+The final management-command check then exposed PowerShell unwrapping a one-item array into a
+scalar, causing checkpoint/metrics/status to be forwarded as characters. Version 1.0.2 explicitly
+types the forwarding array and adds six real launcher subprocess tests. The installed 1.0.2
+checkpoint, metrics and memory status commands passed on the development machine.
 
 ## Reproducible payload benchmark
 

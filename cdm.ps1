@@ -22,7 +22,7 @@ switch ($Action) {
     'uninstall' { & (Join-Path $PSScriptRoot 'uninstall.ps1') -ProjectPath $ProjectPath @Arguments }
     default {
         $cli = Join-Path $install.source 'scripts/cdm.py'
-        $commands = if ($Action -eq 'memory') { @($Arguments) } else { @($Action) + @($Arguments) }
+        [string[]]$commands = if ($Action -eq 'memory') { @($Arguments) } else { @($Action) + @($Arguments) }
         & $install.python $cli --project $install.project @commands
         Assert-Exit 'Memory command'
     }

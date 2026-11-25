@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.2 — 2026-11-25
+
+- Keep single memory subcommands as a string array when forwarding to Python, fixing checkpoint, metrics, and memory status through the PowerShell launcher.
+- Exercise actual launcher subprocesses in both PowerShell 5.1 and 7; previous release assets remain unchanged.
+
 ## 1.0.1 — 2026-11-25
 
 - Fix the PowerShell launcher passing a null positional argument to update, which replaced the default release version with an empty string.

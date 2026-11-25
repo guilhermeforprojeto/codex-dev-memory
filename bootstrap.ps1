@@ -1,4 +1,4 @@
-param([string]$ProjectPath=(Get-Location).Path, [string]$Version='v1.0.1')
+param([string]$ProjectPath=(Get-Location).Path, [string]$Version='v1.0.2')
 $ErrorActionPreference='Stop'
 if ($Version -notmatch '^v\d+\.\d+\.\d+$') { throw 'Use an explicit stable version, e.g. v1.0.0.' }
 $root = (Resolve-Path -LiteralPath $ProjectPath).Path
