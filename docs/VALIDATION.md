@@ -49,6 +49,19 @@ scalar, causing checkpoint/metrics/status to be forwarded as characters. Version
 types the forwarding array and adds six real launcher subprocess tests. The installed 1.0.2
 checkpoint, metrics and memory status commands passed on the development machine.
 
+**1.0.2 public release: PASS.** The hash-verified public bootstrap installed the stable release
+into the same path containing spaces. The public `update` command reinstalled 1.0.2 and returned
+`PUBLIC_RELEASE_102_UPDATE_PERSISTENCE_PASS`; the synthetic record created under 1.0.0 was still
+retrievable. Actual checkpoint, metrics and memory status calls also passed afterward.
+The main local installation is now 1.0.2. Separately, all management wrappers passed against an
+installed test project, including save/search/export, confirmed clear and uninstall.
+
+**1.0.2 remote CI: PASS.** The
+[release commit workflow](https://github.com/guilhermeforprojeto/codex-dev-memory/actions/runs/45553457560)
+passed all 22 Python tests, PowerShell parsing and the update-dispatch regression before the
+release was published. Versions 1.0.0 and 1.0.1 remain available as superseded prereleases;
+their published assets were not replaced.
+
 ## Reproducible payload benchmark
 
 Run `python scripts/benchmark.py <installed-test-project>`. The script creates synthetic JSON/log
