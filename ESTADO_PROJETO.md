@@ -1,9 +1,12 @@
 # Estado do projeto
 
 ## Etapa atual
-Concluído: v1.0.2 instalada, validada e publicada como release estável; instalação pública e atualização verificadas com memória preservada (2026-11-25).
+v1.1.0 instalada nesta máquina: comando global codex-memory, preparação automática por projeto e início direto em português. Testes locais aprovados; publicação da atualização em andamento (2026-11-25).
 
 ## Concluído
+- Comando global codex-memory instalado; projeto novo, repetição, subpasta, atualização de 1.0.2 e texto acentuado verificados.
+- README principal com o comando de início em destaque; instruções e novos checkpoints em português.
+- 26 testes automatizados aprovados; 12 verificações de instalação repetidas com sucesso para 1.1.0.
 - Pesquisa de Codex CLI, MCP, hooks, Headroom, Basic Memory e Serena.
 - Codex existente detectado, autenticado com ChatGPT.
 - Autenticação GitHub existente validada; conteúdo e histórico encontrados no destino preservados.
@@ -32,7 +35,7 @@ Concluído: v1.0.2 instalada, validada e publicada como release estável; instal
 - Adaptador complementar para validação de segredos, checkpoint, exportação e deduplicação por chave.
 
 ## Pendências
-Nenhuma pendência de implementação ou publicação nesta entrega. Limitações documentadas: confiança dos hooks depende de revisão no Codex; reinício físico, API paga, proxy legado e avaliação semântica em larga escala não foram testados.
+Publicar v1.1.0 e verificar o CI. Limitações documentadas: confiança dos hooks depende de revisão no Codex; reinício físico, API paga, proxy legado e avaliação semântica em larga escala não foram testados.
 
 ## Problemas
 - Ambiente sandbox bloqueia rede; downloads autorizados exigem execução fora do sandbox.

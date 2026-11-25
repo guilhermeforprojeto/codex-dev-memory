@@ -8,6 +8,10 @@ param(
 $Arguments = @($Arguments | Where-Object { $null -ne $_ })
 $install = Get-Installation $ProjectPath
 $oldPath = $env:PATH
+$oldPythonEncoding = $env:PYTHONIOENCODING
+$oldConsoleEncoding = [Console]::OutputEncoding
+$env:PYTHONIOENCODING = 'utf-8'
+[Console]::OutputEncoding = [Text.UTF8Encoding]::new($false)
 $portableNode = Join-Path $install.project '.codex-dev-memory/tools/node-v24.15.0-win-x64'
 if (Test-Path (Join-Path $portableNode 'node.exe')) { $env:PATH = "$portableNode;$env:PATH" }
 try {
@@ -27,4 +31,8 @@ switch ($Action) {
         Assert-Exit 'Memory command'
     }
 }
-} finally { $env:PATH = $oldPath }
+} finally {
+    $env:PATH = $oldPath
+    $env:PYTHONIOENCODING = $oldPythonEncoding
+    [Console]::OutputEncoding = $oldConsoleEncoding
+}

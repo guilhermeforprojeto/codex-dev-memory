@@ -91,7 +91,7 @@ def install(root, source, python, codex):
             elif raw.count(START) != raw.count(END) or raw.count(START) > 1:
                 raise ValueError('Malformed existing AGENTS block.')
     source = Path(source).resolve()
-    edit_block(p, p.root/'AGENTS.md', START, END, (source/'templates/AGENTS.md').read_text().strip())
+    edit_block(p, p.root/'AGENTS.md', START, END, (source/'templates/AGENTS.md').read_text(encoding='utf-8').strip())
     edit_block(p, p.root/'.gitignore', IGNORE_START, IGNORE_END,
                IGNORE_START + '\n/.codex-dev-memory/\n/.headroom/\n/.codex/hooks.json\n' + IGNORE_END)
     hooks(p, python, source/'scripts/cdm.py')

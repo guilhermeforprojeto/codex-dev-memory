@@ -1,5 +1,27 @@
 # Codex Dev Memory
 
+## Comece aqui
+
+**Já instalou? Na pasta de qualquer projeto, digite:**
+
+```powershell
+codex-memory
+```
+
+Pronto: o Codex abre com memória persistente e as ferramentas do Headroom.
+Peça suas alterações normalmente, em português. Na primeira execução em um projeto novo,
+o comando prepara tudo automaticamente; nas próximas, reutiliza a instalação e a memória.
+Cada projeto mantém sua própria memória. Em uma subpasta Git, usa a raiz do repositório.
+
+Para retomar a última conversa: `codex-memory resume --last`.
+Para verificar a instalação: `codex-memory doctor`.
+
+**Ainda não instalou?** Use uma vez o comando em [Instalação](#instalação-em-um-comando).
+Depois, use apenas `codex-memory` em qualquer projeto. Se necessário, reabra o terminal ou o VS Code
+para ele reconhecer o comando. O comando original `codex` continua disponível.
+
+## O que é
+
 Memória persistente por projeto e contexto seletivo para **Codex CLI no Windows**,
 usando o armazenamento e a busca locais do Headroom. Funciona com a autenticação
 ChatGPT existente: a memória e a compressão não exigem uma API paga.
@@ -35,7 +57,7 @@ verifica o SHA-256 do bootstrap, executa o arquivo local e verifica o ZIP da rel
 Não usa `Invoke-Expression` nem muda a política de execução.
 
 ```powershell
-$p=Join-Path $env:TEMP 'cdm-bootstrap-v1.0.2.ps1'; Invoke-WebRequest -UseBasicParsing 'https://github.com/guilhermeforprojeto/codex-dev-memory/releases/download/v1.0.2/bootstrap.ps1' -OutFile $p; if((Get-FileHash -LiteralPath $p -Algorithm SHA256).Hash -ne '2ebac05a78f5255fedf2288ac9205a2727dd3f924b59cd4edccf7e6e724f4316'){throw 'SHA-256 invalido'}; & $p
+$p=Join-Path $env:TEMP 'cdm-bootstrap-v1.1.0.ps1'; Invoke-WebRequest -UseBasicParsing 'https://github.com/guilhermeforprojeto/codex-dev-memory/releases/download/v1.1.0/bootstrap.ps1' -OutFile $p; if((Get-FileHash -LiteralPath $p -Algorithm SHA256).Hash -ne 'f88c60d82d13780610c344dfddff68963bf730dc901d5124d3253f00d4709ba2'){throw 'SHA-256 invalido'}; & $p
 ```
 
 Requisitos: Windows 11 x64, PowerShell 5.1 ou 7 e acesso à internet na primeira instalação.
@@ -53,8 +75,16 @@ Veja [instalação e recuperação](docs/INSTALLATION.md) para políticas corpor
 Execute na raiz do projeto:
 
 ```powershell
-.\.codex-dev-memory\cdm.ps1 start
-.\.codex-dev-memory\cdm.ps1 doctor
+codex-memory
+codex-memory doctor
+codex-memory update
+codex-memory uninstall
+```
+
+O uso normal é só `codex-memory`: o agente recebe instruções para consultar e salvar fatos
+relevantes. Os comandos abaixo são opcionais, para inspecionar ou gerenciar a memória manualmente:
+
+```powershell
 .\.codex-dev-memory\cdm.ps1 memory save architecture/database 'Usamos SQLite local.' --category architecture
 .\.codex-dev-memory\cdm.ps1 memory search 'decisoes sobre banco de dados'
 .\.codex-dev-memory\cdm.ps1 memory search 'SQLite' --mode text
@@ -73,6 +103,12 @@ Use `memory retrieve <artifact-id> --offset 0 --limit 16000` para recuperar o or
 Depois de compactar o contexto do chat, peça `force` nas leituras cujo conteúdo já não está disponível.
 O agente recebe cinco ferramentas MCP: `memory_search`, `memory_save`, `memory_status`,
 `context_read` e `context_retrieve`. O launcher não conecta automaticamente a extensão IDE ou outros clientes.
+
+O atalho é instalado em `%USERPROFILE%\.local\bin\codex-memory.cmd`; seus arquivos ficam em
+`%LOCALAPPDATA%\CodexDevMemoryCommand`. O instalador acrescenta essa pasta de comandos ao PATH
+do usuário somente se necessário, preservando as entradas existentes. Não modifica perfis do PowerShell,
+autenticação nem configuração global do Codex. `uninstall` desativa a integração do projeto atual
+e preserva seus dados; o comando global continua disponível para outros projetos.
 
 Atualizar usa uma release fixa; para escolher outra: `update.ps1 -Version vX.Y.Z` no checkout,
 ou `& .\.codex-dev-memory\app\update.ps1 -Version vX.Y.Z`.

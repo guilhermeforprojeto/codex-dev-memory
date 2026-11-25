@@ -1,5 +1,26 @@
 # Codex Dev Memory
 
+## Start here
+
+After installing once, open a terminal in any project and run:
+
+```powershell
+codex-memory
+```
+
+The command prepares new projects automatically and starts Codex with local memory and Headroom
+tools. Ask for changes normally. Later runs reuse that project's installation and memory.
+Use `codex-memory doctor` for diagnostics, `codex-memory update` to update, and
+`codex-memory resume --last` to resume. Reopen the terminal/VS Code if the command is not found.
+The original `codex` command remains available. New agent instructions default to Portuguese,
+unless the user or project requests another language.
+
+The global shim lives in `%USERPROFILE%\.local\bin`; application files live in
+`%LOCALAPPDATA%\CodexDevMemoryCommand`. Installation adds the bin directory to user PATH only
+if needed. PowerShell profiles, Codex authentication and global configuration remain unchanged.
+`codex-memory uninstall` removes only the current project's integration, retaining its memory
+and the global command for other projects.
+
 Project-local persistent memory and selective context for **Codex CLI on Windows**, backed by
 Headroom's native storage and retrieval. Uses existing ChatGPT sign-in; memory and compression
 need no paid API account. [Português](README.md) · [Architecture](docs/ARCHITECTURE.md) · [Validation](docs/VALIDATION.md)
@@ -31,7 +52,7 @@ checked against a pinned SHA-256, then executed locally; it verifies the release
 No in-memory remote-script evaluation or permanent execution-policy change is used.
 
 ```powershell
-$p=Join-Path $env:TEMP 'cdm-bootstrap-v1.0.2.ps1'; Invoke-WebRequest -UseBasicParsing 'https://github.com/guilhermeforprojeto/codex-dev-memory/releases/download/v1.0.2/bootstrap.ps1' -OutFile $p; if((Get-FileHash -LiteralPath $p -Algorithm SHA256).Hash -ne '2ebac05a78f5255fedf2288ac9205a2727dd3f924b59cd4edccf7e6e724f4316'){throw 'Invalid SHA-256'}; & $p
+$p=Join-Path $env:TEMP 'cdm-bootstrap-v1.1.0.ps1'; Invoke-WebRequest -UseBasicParsing 'https://github.com/guilhermeforprojeto/codex-dev-memory/releases/download/v1.1.0/bootstrap.ps1' -OutFile $p; if((Get-FileHash -LiteralPath $p -Algorithm SHA256).Hash -ne 'f88c60d82d13780610c344dfddff68963bf730dc901d5124d3253f00d4709ba2'){throw 'Invalid SHA-256'}; & $p
 ```
 
 Targets Windows 11 x64 and PowerShell 5.1/7. Internet is needed for initial provisioning.

@@ -1,5 +1,9 @@
 # Instalação / Installation
 
+Instale uma vez pelo comando do README. Depois, em qualquer projeto, execute **`codex-memory`**.
+O atalho prepara projetos novos automaticamente e reutiliza a memória nas próximas sessões.
+O README principal está em português e começa pelo uso diário.
+
 Use the pinned one-command installer in either README from the intended project's root. It never
 chooses a project by scanning your personal directories. A local checkout also works:
 
@@ -16,13 +20,16 @@ transaction: partial caches/venvs can remain after interruption.
 
 The first installation downloads several hundred MB. Each project has an isolated runtime/model
 directory. UV's cache can be shared explicitly through `UV_CACHE_DIR`. No administrator privileges,
-global PATH modifications, antivirus exclusions or execution-policy changes are required.
+machine-wide PATH modifications, antivirus exclusions or execution-policy changes are required.
+The global command installer adds `%USERPROFILE%\.local\bin` to the user PATH only if absent,
+preserving the previous value in a backup. Existing PowerShell profiles are not edited.
 
 PowerShell must permit local scripts under your existing organization policy. If policy blocks
 execution, use your approved administrative process; this installer does not change that policy.
 Windows ARM64, WSL and Linux/macOS installers are outside this release's validated matrix.
 
-Start with `.\.codex-dev-memory\cdm.ps1 start`. Codex may ask you to trust the project and hooks;
+Start with `codex-memory` (or `.\.codex-dev-memory\cdm.ps1 start` for a project-only install).
+Codex may ask you to trust the project and hooks;
 review the generated files in `.codex/hooks.json`. Do not use a blanket hook-trust bypass.
 An ordinary `codex` invocation does not receive this launcher's per-process MCP configuration.
 No global `config.toml` or `auth.json` edits are required by the installer. The live test used Codex's

@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0 — 2026-11-25
+
+- Comando global `codex-memory`: prepara projetos novos automaticamente e abre o Codex com memória e Headroom.
+- Reconhece a raiz do projeto a partir de subpastas e preserva a separação das memórias.
+- README principal com início direto em português; novas instruções e checkpoints em português.
+- Instalação global sem alterar o comando original do Codex, seus perfis ou sua autenticação.
+
 ## 1.0.2 — 2026-11-25
 
 - Keep single memory subcommands as a string array when forwarding to Python, fixing checkpoint, metrics, and memory status through the PowerShell launcher.

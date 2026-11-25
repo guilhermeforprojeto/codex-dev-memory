@@ -1,11 +1,11 @@
-# Project checkpoint
+# Estado do projeto
 
-Objective: Not yet recorded.
-Architecture and technologies: Not yet recorded.
-Completed: Memory environment installed.
-Pending: Record project-specific state with concise, verified facts.
-Errors and solutions: None recorded.
-Tests actually run: See installation diagnostic output.
-Important files: AGENTS.md; .codex-dev-memory/checkpoint.md.
-Preferences: Keep memory local; retrieve selectively; preserve credentials.
-Next action: Inspect current project and update this checkpoint.
+Objetivo: ainda não registrado.
+Arquitetura e tecnologias: ainda não registradas.
+Concluído: ambiente de memória instalado.
+Pendente: registrar fatos concisos e verificados sobre este projeto.
+Erros e soluções: nenhum registrado.
+Testes executados: consultar o diagnóstico da instalação.
+Arquivos relevantes: AGENTS.md; .codex-dev-memory/checkpoint.md.
+Preferências: responder em português; memória local e seletiva; preservar credenciais.
+Próxima ação: inspecionar o projeto e atualizar este resumo.

@@ -1,5 +1,25 @@
 # Actual validation / Validação real
 
+## Comando simples — v1.1.0
+
+Validado em 2026-11-25: `codex-memory` instalado no PATH já existente desta máquina;
+nenhum perfil PowerShell ou configuração global do Codex foi alterado. O comando preparou
+um projeto Git novo a partir de uma subpasta, iniciou o executável real do Codex com `start --version`,
+gravou e recuperou memória e reutilizou a instalação no segundo início. A atualização automática
+de um projeto 1.0.2 para 1.1.0 preservou a memória. Texto com acentos foi gravado e recuperado
+corretamente pelo atalho do Windows PowerShell.
+
+26 testes Python aprovados, incluindo quatro novos testes em PowerShell 5.1/7 para
+instalação idempotente do comando, preservação de arquivos alheios, argumentos com espaços,
+subpastas e repositórios aninhados. As 12 verificações do ciclo de instalação foram repetidas
+com sucesso. Uma tentativa inicial de redirecionar a instalação no PowerShell 5.1 tratou a saída
+de progresso do UV como erro; corrigida usando um subprocesso com stdout/stderr separados.
+O fluxo real de atualização passou após a correção. O teste de interface TUI interativa não foi
+repetido nesta versão; a recuperação real com ChatGPT/MCP foi validada na versão anterior abaixo.
+
+O README principal agora apresenta o comando diário no topo, em português. As novas instruções
+de agente e o modelo de checkpoint também estão em português. Os detalhes históricos seguem abaixo.
+
 Date: 2026-11-25. Windows 11 x64; PowerShell 7.6.9 and Windows PowerShell 5.1;
 Python 3.12.10; Headroom 0.45.0; MCP 2.3.0; existing Codex CLI 0.171.0-alpha.13.2
 authenticated with ChatGPT. The user's production credentials were never exported into artifacts.

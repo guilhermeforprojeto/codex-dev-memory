@@ -1,4 +1,4 @@
-param([string]$ProjectPath=(Get-Location).Path, [string]$Version='v1.0.2')
+param([string]$ProjectPath=(Get-Location).Path, [string]$Version='v1.1.0')
 $ErrorActionPreference='Stop'
 if ($Version -notmatch '^v\d+\.\d+\.\d+$') { throw 'Use an explicit stable version, e.g. v1.0.0.' }
 $root = (Resolve-Path -LiteralPath $ProjectPath).Path
@@ -22,4 +22,5 @@ try {
 } finally { $archive.Dispose() }
 Expand-Archive -LiteralPath $zip -DestinationPath $stage
 & (Join-Path $stage 'codex-dev-memory/install-project.ps1') -ProjectPath $root
+& (Join-Path $stage 'codex-dev-memory/install-command.ps1')
 Write-Host "Verified release: $Version. Download retained at $stage"

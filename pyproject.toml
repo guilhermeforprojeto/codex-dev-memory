@@ -1,6 +1,6 @@
 [project]
 name = "codex-dev-memory"
-version = "1.0.2"
+version = "1.1.0"
 description = "Project-local Headroom memory and explicit context compression for Codex CLI"
 requires-python = ">=3.12,<3.14"
 license = "MIT"
